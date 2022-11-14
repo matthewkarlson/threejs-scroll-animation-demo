@@ -65,7 +65,7 @@ scene.background = spaceTexture;
 
 // Avatar
 
-const jeffTexture = new THREE.TextureLoader().load('jeff.png');
+const jeffTexture = new THREE.TextureLoader().load('matt.jpeg');
 
 const jeff = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: jeffTexture }));
 
@@ -80,7 +80,7 @@ const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
     map: moonTexture,
-    normalMap: normalTexture,
+   // normalMap: normalTexture,
   })
 );
 
@@ -96,13 +96,14 @@ jeff.position.x = 2;
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  moon.rotation.x += 0.05;
-  moon.rotation.y += 0.075;
-  moon.rotation.z += 0.05;
+  moon.rotation.x += 0.025;
+  //moon.rotation.y += 0.075;
+  moon.rotation.z += 0.025;
 
   jeff.rotation.y += 0.01;
-  jeff.rotation.z += 0.01;
-
+  //jeff.rotation.z += 0.01;
+  torus.rotation.x += 0.01;
+  torus.rotation.z += 0.01;
   camera.position.z = t * -0.01;
   camera.position.x = t * -0.0002;
   camera.rotation.y = t * -0.0002;
@@ -116,15 +117,13 @@ moveCamera();
 function animate() {
   requestAnimationFrame(animate);
 
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.005;
-  torus.rotation.z += 0.01;
 
-  moon.rotation.x += 0.005;
 
-  // controls.update();
+  // moon.rotation.x += 0.005;
 
-  renderer.render(scene, camera);
+  // // controls.update();
+
+   renderer.render(scene, camera);
 }
 
 animate();
